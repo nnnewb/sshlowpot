@@ -6,6 +6,7 @@
 # Folders
 _obj
 _test
+vendor
 
 # Architecture specific extensions/prefixes
 *.[568vq]
@@ -22,10 +23,10 @@ _testmain.go
 *.exe
 *.test
 *.prof
-
-id_rsa
-slp_id_rsa
-
-.vscode
-.idea
+*.pprof
+*.out
 *.log
+
+/bin
+cover.out
+cover.html
