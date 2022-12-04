@@ -214,7 +214,7 @@ func logPass(conn ssh.ConnMetadata, password []byte) (*ssh.Permissions, error) {
 			"remote_addr":    conn.RemoteAddr().String(),
 			"local_addr":     conn.LocalAddr().String(),
 		}),
-	).Info("Catch login attempt")
+	).Sugar().Infof("%s Catch login attempt", ci(conn))
 	return nil, fmt.Errorf("invalid password")
 }
 
@@ -233,8 +233,7 @@ func logPubKey(conn ssh.ConnMetadata, key ssh.PublicKey) (*ssh.Permissions, erro
 			"local_addr":     conn.LocalAddr().String(),
 		}),
 		zap.ByteString("ssh-version", conn.ClientVersion()),
-	).Info("Catch login attempt")
-	// logger.Sugar().Infof("%v Key(%v):%02X", ci(conn), key.Type(), md5.Sum(key.Marshal()))
+	).Sugar().Infof("%s Catch login attempt", ci(conn))
 	return nil, fmt.Errorf("invalid key")
 }
 
